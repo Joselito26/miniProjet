@@ -24,7 +24,6 @@ body {
 .panel {
   position: relative;
   height: 80vh;
-  background-image: url(../images/city-on-winter.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -50,4 +49,14 @@ body {
 .panel.active h3 {
   opacity: 1;
   transition: opacity 0.3s ease-in-out 0.4s;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 100vw;
+  }
+  .panel:nth-of-type(4),
+  .panel:nth-of-type(5) {
+    display: none;
+  }
 }
