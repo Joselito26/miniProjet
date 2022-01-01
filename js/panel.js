@@ -9,7 +9,34 @@ export class Panel {
     // div.style = "background-image: url(images/" + img  + ".jpg)";
     div.style = "background-image: url(images/city-on-winter.jpg)";
     div.className = "panel";
-    div.innerHTML = "<h3>" + title + "</h3>";
+    div.innerHTML = `<h3>${capitaliseTitle()}</h3>`;
+
+    function capitaliseTitle() {
+      const words = title.split(" ");
+
+      const result = words.map((w) => {
+        let first = w.charAt(0);
+        first = first.toUpperCase();
+        const rest = w.slice(1);
+        return first + rest + " ";
+      });
+
+      console.log(result);
+
+      return result.join(" ");
+
+      // const words = title.split(" "); // ['mon,'  'super', 'titre']
+
+      // let newTitle = "";
+
+      // words.forEach((w) => {
+      //   // mon, (1er tour de boucle)
+      //   let first = w.charAt(0); // m
+      //   first = first.toUpperCase(); // M
+      //   const rest = w.slice(1); // mon ---> on
+      //   newTitle += first + rest + " "; // --> Mon
+      // });
+    }
   }
 
   listenClickEvent() {
