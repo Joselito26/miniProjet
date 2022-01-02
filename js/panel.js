@@ -1,49 +1,34 @@
 export class Panel {
-  constructor(title = "no title") {
+  constructor(title = "no title", imagePath = "") {
     const div = (this.html = document.createElement("div"));
-    this.initialize(div, title);
+    this.initialize(div, title, imagePath);
     this.listenClickEvent();
   }
 
-  initialize(div, title) {
-    // div.style = "background-image: url(images/" + img  + ".jpg)";
-    div.style = "background-image: url(images/city-on-winter.jpg)";
+  initialize(div, title, imagePath) {
+    div.style = `background-image: url(${getImagePath()})`;
     div.className = "panel";
-    div.innerHTML = `<h3>${capitaliseTitle()}</h3>`;
+    div.innerHTML = `<h3>${capitalizeTitle()}</h3>`;
 
-    function capitaliseTitle() {
-      const words = title.split(" ");
-
-      const result = words.map((w) => {
-        let first = w.charAt(0);
-        first = first.toUpperCase();
-        const rest = w.slice(1);
-        return first + rest + " ";
-      });
-
-      console.log(result);
-
-      return result.join(" ");
-
-      // const words = title.split(" "); // ['mon,'  'super', 'titre']
-
-      // let newTitle = "";
-
-      // words.forEach((w) => {
-      //   // mon, (1er tour de boucle)
-      //   let first = w.charAt(0); // m
-      //   first = first.toUpperCase(); // M
-      //   const rest = w.slice(1); // mon ---> on
-      //   newTitle += first + rest + " "; // --> Mon
-      // });
+    function capitalizeTitle() {
+      return title
+        .split(" ")
+        .map(
+          ([first, ...rest]) =>
+            first.toUpperCase() + rest.join("").toLowerCase()
+        )
+        .join(" ");
+    }
+    function getImagePath() {
+      return imagePath || `./images/${title.replaceAll(" ", "-")}.jpg`;
     }
   }
 
   listenClickEvent() {
     this.html.addEventListener("click", () => {
-      Array.from(this.html.parentNode.children).forEach((p) => {
-        p.classList.remove("active");
-      });
+      Array.from(this.html.parentNode.children).forEach((p) =>
+        p.classList.remove("active")
+      );
       this.html.classList.add("active");
     });
   }

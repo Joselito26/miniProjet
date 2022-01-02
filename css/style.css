@@ -9,10 +9,12 @@ body {
   color: white;
   font-family: "Mulish", sans-serif;
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
+  padding-top: 20px;
   overflow: hidden;
 }
 
@@ -21,6 +23,7 @@ body {
   display: flex;
 }
 
+/*HOME PAGE*/
 .panel {
   position: relative;
   height: 80vh;
@@ -49,6 +52,25 @@ body {
 .panel.active h3 {
   opacity: 1;
   transition: opacity 0.3s ease-in-out 0.4s;
+}
+
+/*ADMIN PAGE*/
+input[type="file"] {
+  font-size: 24px;
+}
+.preview img {
+  height: 90px;
+  width: 130px;
+  object-fit: cover; /* permet de contenir l'image dans le container défini l-1 et l-2*/
+  object-position: center;
+  margin-left: 30px;
+}
+
+/*FOOTER*/
+
+footer {
+  margin-top: auto;
+  margin-bottom: 15px;
 }
 
 @media screen and (max-width: 480px) {
